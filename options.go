@@ -38,7 +38,7 @@ func WithWriter(w io.Writer) Option {
 	}
 }
 
-// WithFlagSet set custom output for completion.
+// WithFlagSet set custom [flag.FlagSet] as completion source.
 func WithFlagSet(fset *flag.FlagSet) Option {
 	return func(o *options) {
 		o.flags = fset
