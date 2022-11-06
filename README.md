@@ -46,7 +46,9 @@ Build your app, put binary somewhere in your "PATH", then run:
     complete -C %your-binary-name% %your-binary-name%
 ```
 
-Now enter "%your-binary-name%", and hit `TAB` twice )
+Now enter `%your-binary-name%`, and hit `TAB` twice )
+
+# shell compatability
 
 This will work with any shell compatible with `complete` (bash and zsh are both good with it), for zsh you may need
 also use `bashcompinit` in addition to `compinit`.
