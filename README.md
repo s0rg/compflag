@@ -15,9 +15,18 @@ Auto-completion for stdlib flag items
 
 # usage
 
-just call compflag.Complete() somewhere before actual app logic, best point is right at the start:
+Call compflag.Complete() somewhere before actual app logic, best point is right at the start:
 
 ```go
+    package main
+
+    import (
+        "os"
+        "flag"
+
+        "github.com/s0rg/compflag"
+    )
+
 	func main() {
 	  if compflag.Complete() {
 	    os.Exit(0)
