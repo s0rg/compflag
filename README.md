@@ -27,15 +27,15 @@ Call compflag.Complete() somewhere before actual app logic, best point is right 
         "github.com/s0rg/compflag"
     )
 
-	func main() {
-	  if compflag.Complete() {
-	    os.Exit(0)
-	  }
+    func main() {
+        if compflag.Complete() {
+            os.Exit(0)
+        }
 
-	  flag.Parse()
+        flag.Parse()
 
-	  // other startup logic...
-	}
+        // other startup logic...
+    }
 ```
 
 Please note, that you need to exit app if any completion happened.
