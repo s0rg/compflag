@@ -1,7 +1,9 @@
 package compflag
 
 import (
+	"errors"
 	"flag"
+	"fmt"
 	"io"
 	"os"
 	"strconv"
@@ -9,9 +11,13 @@ import (
 )
 
 const (
+	exitCode     = 0
 	envCompLine  = "COMP_LINE"
 	envCompPoint = "COMP_POINT"
+	flagUsage    = "completion-triggering flag"
 )
+
+var ErrUnknownShell = errors.New("shell unknown")
 
 // Complete handles completion process started by shell, returns false if no completion was requested.
 func Complete(opts ...Option) (ok bool) {
@@ -50,6 +56,29 @@ func Complete(opts ...Option) (ok bool) {
 	_, _ = io.WriteString(cfg.writer, sb.String())
 
 	return true
+}
+
+func Var(name string, opts ...Option) {
+	var cfg options
+
+	for _, o := range opts {
+		o(&cfg)
+	}
+
+	cfg.validate()
+
+	cfg.flags.Func(name, flagUsage, func(arg string) (err error) {
+		switch arg {
+		case "bash", "zsh":
+			if Complete(append(opts, WithHidden(name))...) {
+				cfg.exit(exitCode)
+			}
+		default:
+			err = fmt.Errorf("%w: %s", ErrUnknownShell, arg)
+		}
+
+		return
+	})
 }
 
 func extractToken(line string, pos int) (val string) {

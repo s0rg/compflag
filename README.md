@@ -15,8 +15,9 @@ Auto-completion for stdlib flag items
 
 # usage
 
-Call compflag.Complete() somewhere before actual app logic, best point is right at the start:
+you got two options here:
 
+- Call compflag.Complete() somewhere before actual app logic, best point is right at the start:
 ```go
     package main
 
@@ -38,12 +39,38 @@ Call compflag.Complete() somewhere before actual app logic, best point is right 
     }
 ```
 
+- Define trigger flag for completion:
+```go
+    package main
+
+    import (
+        "os"
+        "flag"
+
+        "github.com/s0rg/compflag"
+    )
+
+    func main() {
+	    compflag.Var("complete")
+
+        flag.Parse()
+
+        // other startup logic...
+    }
+
+```
+
 Please note, that you need to exit app if any completion happened.
 
 Build your app, put binary somewhere in your "PATH", then run:
 
 ```bash
     complete -C %your-binary-name% %your-binary-name%
+```
+
+if you prefer flag-triggered version:
+```bash
+    complete -C "%your-binary-name% -%your-flag% bash" %your-binary-name%
 ```
 
 Now enter `%your-binary-name%`, and hit `TAB` twice )

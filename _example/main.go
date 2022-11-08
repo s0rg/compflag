@@ -17,9 +17,13 @@ var (
 )
 
 func main() {
+	// option 1
 	if compflag.Complete() {
 		os.Exit(0)
 	}
+
+	// option 2
+	// compflag.Var("complete")
 
 	flag.Parse()
 
