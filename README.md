@@ -51,7 +51,7 @@ you got two options here:
     )
 
     func main() {
-	    compflag.Var("complete")
+        compflag.Var("complete")
 
         flag.Parse()
 
