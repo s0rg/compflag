@@ -10,6 +10,7 @@ type (
 	options struct {
 		flags  *flag.FlagSet
 		writer io.Writer
+		exit   func(int)
 		hidden map[string]struct{}
 	}
 
@@ -24,6 +25,10 @@ func (o *options) validate() {
 
 	if o.writer == nil {
 		o.writer = os.Stdout
+	}
+
+	if o.exit == nil {
+		o.exit = os.Exit
 	}
 
 	if o.hidden == nil {
@@ -42,6 +47,13 @@ func WithWriter(w io.Writer) Option {
 func WithFlagSet(fset *flag.FlagSet) Option {
 	return func(o *options) {
 		o.flags = fset
+	}
+}
+
+// WithExitFunc set custom exit handler on successful complete.
+func WithExitFunc(fn func(int)) Option {
+	return func(o *options) {
+		o.exit = fn
 	}
 }
 
