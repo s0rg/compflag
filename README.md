@@ -5,8 +5,8 @@
 
 [![CI](https://github.com/s0rg/compflag/workflows/ci/badge.svg)](https://github.com/s0rg/compflag/actions?query=workflow%3Aci)
 [![Go Report Card](https://goreportcard.com/badge/github.com/s0rg/compflag)](https://goreportcard.com/report/github.com/s0rg/compflag)
-[![Maintainability](https://api.codeclimate.com/v1/badges/b1ab20a6dd9536e9fbc8/maintainability)](https://codeclimate.com/github/s0rg/compflag/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/b1ab20a6dd9536e9fbc8/test_coverage)](https://codeclimate.com/github/s0rg/compflag/test_coverage)
+[![Maintainability](https://qlty.sh/badges/40c7eb9f-11aa-4fbd-bac9-0a674b89270b/maintainability.svg)](https://qlty.sh/gh/s0rg/projects/compflag)
+[![Code Coverage](https://qlty.sh/badges/40c7eb9f-11aa-4fbd-bac9-0a674b89270b/test_coverage.svg)](https://qlty.sh/gh/s0rg/projects/compflag)
 ![Issues](https://img.shields.io/github/issues/s0rg/compflag)
 
 # compflag
